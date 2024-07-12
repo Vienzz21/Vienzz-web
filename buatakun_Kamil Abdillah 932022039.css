@@ -1,0 +1,94 @@
+.custom-input {
+    background: #FCF2AD;
+    position: absolute;
+    width: 384px;
+    height: 45px;
+    left: 510px;
+    font-size: 24px;
+    font-family: Inter;
+    font-weight: bold;
+    border: 2px solid #FCF2AD;
+    border-radius: 16px;
+    padding: 10px 20px;
+}
+
+.input-label {
+    position: absolute;
+    color: #0000;
+    font-size: 20px;
+    font-family: Inter;
+    font-weight: bold;
+}
+
+.custom-input2 {
+    position: absolute;
+    width: 426px;
+    height: 66px;
+    left: 982px;
+    top: 282px;
+    background: #FCF2AD;
+    border: none;
+    border-radius: 16px;
+    font-size: 24px;
+    font-family: Inter;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.input-label2 {
+    position: absolute;
+    color: #0000;
+    font-size: 20px;
+    font-family: Inter;
+    font-weight: bold;
+}
+
+.custom-input3 {
+    position: absolute;
+    width: 898px;
+    height: 66px;
+    left: 510px;
+    top: 408px;
+    background: #FCF2AD;
+    border: none;
+    border-radius: 16px;
+    font-size: 16px;
+    font-family: Inter;
+    font-weight: bold;
+    padding: 10px 20px;
+    box-sizing: border-box;
+}
+
+.custom-input4 {
+    position: absolute;
+    width: 898px;
+    height: 66px;
+    left: 510px;
+    top: 534px;
+    background: #FCF2AD;
+    border: none;
+    border-radius: 16px;
+    font-size: 16px;
+    font-family: Inter;
+    font-weight: bold;
+    padding: 10px 20px;
+    box-sizing: border-box;
+}
+
+.custom-button3 {
+    position: absolute;
+    width: 566px;
+    height: 100px;
+    left: 681px;
+    top: 660px;
+    background: #CD2B1D;
+    border: none;
+    border-radius: 16px;
+    font-size: 34px;
+    font-family: Inter;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    padding: 10px 20px;
+    box-sizing: border-box;
+}

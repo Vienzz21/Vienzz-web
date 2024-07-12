@@ -1,0 +1,211 @@
+/* General styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: #02182D;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: #02182D;
+}
+
+.login-box {
+    width: 986px;
+    height: 1024px;
+    left: 454px;
+    top: 0;
+    position: absolute;
+    background: #F6F6F6;
+}
+
+.login-title {
+    width: 469px;
+    height: 61px;
+    left: 258px;
+    top: 68px;
+    position: absolute;
+    text-align: center;
+    color: black;
+    font-size: 48px;
+    font-family: Inter;
+    font-weight: 600;
+    word-wrap: break-word;
+}
+
+.input-background {
+    width: 654px;
+    height: 82px;
+    left: 258px;
+    position: absolute;
+    background: #D9D9D9;
+}
+
+.button-background {
+    width: 654px;
+    height: 82px;
+    left: 258px;
+    top: 568px;
+    position: absolute;
+    background: #FA880E;
+}
+
+.custom-input {
+    position: absolute;
+    width: 680px;
+    height: 82px;
+    left: 258px;
+    font-size: 24px;
+    font-family: Inter;
+    font-weight: bold;
+    border: 2px solid #000000; /* Garis pinggir */
+    border-radius: 5px; /* Bentuk sudut */
+    padding: 10px 20px; /* Ruang dalam input */
+}
+
+.input-label {
+    position: absolute;
+    color: #000000; /* Warna teks */
+    font-size: 20px;
+    font-family: Inter;
+    font-weight: bold;
+}
+
+.custom-button {
+    position: absolute;
+    width: 654px;
+    height: 82px;
+    left: 258px;
+    top: 580px;
+    text-align: center;
+    color: #F6F6F6;
+    font-size: 36px;
+    font-family: Inter;
+    font-weight: bold;
+    background-color: #FA880E; /* Warna latar belakang */
+    border: none; /* Hapus border */
+    border-radius: 5px; /* Bentuk sudut */
+    padding: 10px 20px; /* Ruang dalam tombol */
+    cursor: pointer;
+}
+
+/* Efek saat tombol dihover */
+.custom-button:hover {
+    background-color: #FA880E;
+}
+
+.divider {
+    width: 718px;
+    height: 0px;
+    left: 226px;
+    top: 740px;
+    position: absolute;
+    border: 1px black solid;
+}
+
+.create-account-background {
+    width: 501px;
+    height: 134px;
+    left: 333px;
+    top: 807px;
+    position: absolute;
+    background: #CD2B1D;
+}
+
+.custom-button2 {
+    position: absolute;
+    width: 500px;
+    height: 134px;
+    left: 334px;
+    top: 808px;
+    text-align: center;
+    color: white;
+    font-size: 48px;
+    font-family: Kanit;
+    font-weight: 700;
+    background-color: #CD2B1D; /* Warna latar belakang */
+    border: none; /* Hapus border */
+    border-radius: 1px; /* Bentuk sudut */
+    padding: 28px 10px; /* Ruang dalam tombol */
+    cursor: pointer;
+}
+
+/* Efek saat tombol dihover */
+.custom-button2:hover {
+    background-color: #CD2B1D;
+}
+
+.side-bar {
+    position: absolute;
+    background: #02182D;
+}
+
+.left-bar {
+    width: 454px;
+    height: 1024px;
+    left: 0;
+    top: 0;
+}
+
+.right-bar {
+    width: 37px;
+    height: 1024px;
+    left: 962px;
+    top: 0;
+}
+
+.bottom-bar {
+    width: 981px;
+    height: 17px;
+    left: 0;
+    top: 1007px;
+}
+
+.sicaper-title {
+    width: 416px;
+    height: 155px;
+    left: 21px;
+    top: 98px;
+    position: absolute;
+    text-align: center;
+    color: #FCF2AD;
+    font-size: 64px;
+    font-family: Moul;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.sicaper-image {
+    width: 493px;
+    height: 466px;
+    left: 121px;
+    top: 279px;
+    position: absolute;
+}
+
+.blended-learning {
+    width: 467px;
+    height: 64px;
+    left: -5px;
+    top: 175px;
+    position: absolute;
+    text-align: center;
+    color: #FA880E;
+    font-size: 36px;
+    font-family: Moul;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.top-bar {
+    width: 987px;
+    height: 36px;
+    left: 453px;
+    top: 0;
+    position: absolute;
+    background: #02182D;
+}

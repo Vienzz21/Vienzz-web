@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Form Data Diri Mahasiswa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="home_Kevien Abdul Winata 932022061.js" defer></script>
+    <script src="button.js" defer></script>
+    <script src="formdatadiri_Kevien Abdul Winata 932022061.js" defer></script>
+  </head>
+<body>
+  <script src="home_Kevien Abdul Winata 932022061.js" defer></script>
+    <div style="width: 100%; height: 100%; position: relative; background: white">
+        <div style="width: 1423px; height: 100px; left: 17px; top: 0px; position: absolute; background: #02182D"></div>
+        <div style="width: 1423px; height: 79px; left: 18px; top: 99px; position: absolute; background: #02182D"></div>
+        <div style="width: 287px; height: 41px; left: 158px; top: 75px; position: absolute; text-align: center; color: #FA880E; font-size: 24px; font-family: Moul; font-weight: 400; word-wrap: break-word">Bleanded Learning </div>
+        <div style="width: 231px; height: 60px; left: 148px; top: 27px; position: absolute; text-align: center; color: #FCF2AD; font-size: 36px; font-family: Moul; font-weight: 400; word-wrap: break-word">SICAPER   </div>
+        <div style="width: 546px; height: 116px; left: 895px; top: 0px; position: absolute; background: #02182D"></div>
+        <img style="width: 171px; height: 178px; left: 0px; top: 0px; position: absolute" src="images/sicaper.jpg" />
+        <div style="width: 461px; height: 70px; left: 900px; top: 40px; position: absolute; text-align: center; color: white; font-size: 32px; font-family: Moul; font-weight: 450; word-wrap: break-word" id="namaMahasiswa"></div>
+        <script src="home_Kevien Abdul Winata 932022061.js" defer></script>
+        <script>
+            // Mendapatkan nilai nama mahasiswa dari PHP dan mengisinya ke dalam elemen HTML
+            var firstname = "<?php echo $firstname; ?>";
+            var lastname = "<?php echo $lastname; ?>";
+            var namaMahasiswa = firstname + " " + lastname;
+            document.getElementById('namaMahasiswa').innerHTML = namaMahasiswa;
+        </script>  
+        <div style="width: 461px; height: 59px; left: 862px; top: 40px; position: absolute; text-align: center; color: white; font-size: 32px; font-family: Moul; font-weight: 400; word-wrap: break-word">
+            <style>
+                .custom-dropdown .dropdown-menu {
+                  background-color: #D9D9D9; /* Warna latar belakang dropdown */
+                }
+                
+                .custom-dropdown .dropdown-toggle {
+                  background-color: #02182D; /* Warna latar belakang tombol dropdown */
+                  border: none; /* Hapus border pada tombol dropdown */
+                }
+                .custom-dropdown .dropdown-toggle::after {
+                    font-size: 1.8em; /* Ubah ukuran panah dropdown */
+                }
+                </style>
+              
+              <div class="dropdown custom-dropdown" style="margin-top: 25px; margin-left: 520px; border:none ;">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #02182D;">
+                  <!-- Tambahkan ikon atau teks untuk tombol toggle dropdown di sini -->
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Profil Akun</a></li>
+                  <li><a class="dropdown-item" href="#">About</a></li>
+                  <li><a class="dropdown-item" href="#">Pengaturan</a></li>
+                  <li><a id="logoutButton" class="dropdown-item" href="index_Muhammad rizal 932022043.html">Logout</a></li>
+                </ul>
+              </div>
+                       
+          </div> 
+        <img style="width: 83px; height: 73px; left: 1305px; top: 22px; position: absolute" src="images/orang.jpeg" />
+        <div style="width: 1440px; height: 67px; left: 0px; top: 178px; position: absolute; background: #D9D9D9"></div>
+        <div style="width: 1440px; height: 67px; left: 0px; top: 966px; position: absolute; background: #02182D"></div>
+        <div style="width: 149px; height: 29px; left: 1256px; top: 198px; position: absolute; text-align: center; color: black; font-size: 15px; font-family: Moul; font-weight: 400; word-wrap: break-word">TENTANG KAMI</div>
+        <div style="width: 416px; height: 35px; left: 784px; top: 194px; position: absolute; text-align: center; color: black; font-size: 20px; font-family: Moul; font-weight: 400; word-wrap: break-word">CONTACT PERSON (081548748554)</div>
+        <div style="left: 17px; top: 187px; position: absolute; text-align: center; color: black; font-size: 32px; font-family: Moul; font-weight: 400; word-wrap: break-word">Data Diri</div>
+        <div style="left: 54px; top: 290px; position: absolute; text-align: center; color: black; font-size: 20px; font-family: Moul; font-weight: 400; word-wrap: break-word">Nama  </div>
+        <div style="width: 67px; left: 45px; top: 366px; position: absolute; text-align: center; color: black; font-size: 20px; font-family: Moul; font-weight: 400; word-wrap: break-word">NISN </div>
+        <div style="padding: 10px; left: 45px; top: 437px; position: absolute; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
+        <div style="text-align: center; color: black; font-size: 20px; font-family: Moul; font-weight: 400; word-wrap: break-word">Alamat  </div>
+        </div>
+        <div style="width: 154px; padding: 10px; left: 27px; top: 515px; position: absolute; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
+            <div style="text-align: center; color: black; font-size: 20px; font-family: Moul; font-weight: 400; word-wrap: break-word">No Telepon  </div>
+        </div>
+        <div style="width: 154px; padding: 10px; left: 35px; top: 605px; position: absolute; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
+            <div style="text-align: center; color: black; font-size: 20px; font-family: Moul; font-weight: 400; word-wrap: break-word">Asal Sekolah </div>
+        </div>
+        <div style="width: 154px; padding: 10px; left: 29px; top: 709px; position: absolute; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
+            <div style="text-align: center; color: black; font-size: 20px; font-family: Moul; font-weight: 400; word-wrap: break-word">Nilai Akhir   </div>
+        </div>
+        <style>
+        .custom-input {
+            width: 584px;
+            height: 47px;
+            background: #D9D9D9;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            color: #000; /* You can adjust text color */
+            border-radius: 5px; /* Adjust as needed */
+            position: absolute;
+            left: 301px;
+            top: 285px;
+          }
+        </style>
+        <input type="text" class="custom-input">
+        <style>
+            .custom-input2 {
+                width: 584px;
+                height: 47px;
+                background: #D9D9D9;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                font-size: 16px;
+                font-weight: bold;
+                color: #000; /* You can adjust text color */
+                border-radius: 5px; /* Adjust as needed */
+                position: absolute;
+                left: 301px;
+                top: 441px;
+              }
+            </style>
+            <input type="text" class="custom-input2">
+            <style>
+                .custom-input3 {
+                    width: 584px;
+                    height: 47px;
+                    background: #D9D9D9;
+                    border: none;
+                    outline: none;
+                    cursor: pointer;
+                    font-size: 16px;
+                    font-weight: bold;
+                    color: #000; /* You can adjust text color */
+                    border-radius: 5px; /* Adjust as needed */
+                    position: absolute;
+                    left: 301px;
+                    top: 523px;
+                  }
+                </style>
+                <input type="text" class="custom-input3">
+                <style>
+                    .custom-input4 {
+                        width: 584px;
+                        height: 47px;
+                        background: #D9D9D9;
+                        border: none;
+                        outline: none;
+                        cursor: pointer;
+                        font-size: 16px;
+                        font-weight: bold;
+                        color: #000; /* You can adjust text color */
+                        border-radius: 5px; /* Adjust as needed */
+                        position: absolute;
+                        left: 301px;
+                        top: 609px;
+                      }
+                    </style>
+                    <input type="text" class="custom-input4">
+                    <style>
+                        .custom-input5 {
+                            width: 113px;
+                            height: 47px;
+                            background: #D9D9D9;
+                            border: none;
+                            outline: none;
+                            cursor: pointer;
+                            font-size: 16px;
+                            font-weight: bold;
+                            color: #000; /* You can adjust text color */
+                            border-radius: 5px; /* Adjust as needed */
+                            position: absolute;
+                            left: 301px;
+                            top: 709px;
+                          }
+                        </style>
+                        <input type="text" class="custom-input5">
+                        <style>
+                            .custom-input6 {
+                                width: 584px;
+                                height: 47px;
+                                background: #D9D9D9;
+                                border: none;
+                                outline: none;
+                                cursor: pointer;
+                                font-size: 16px;
+                                font-weight: bold;
+                                color: #000; /* You can adjust text color */
+                                border-radius: 5px; /* Adjust as needed */
+                                position: absolute;
+                                left: 301px;
+                                top: 361px;
+                              }
+                            </style>
+                            <input type="text" class="custom-input6">
+        <div style="left: 263px; top: 269px; position: absolute; text-align: center; color: black; font-size: 32px; font-family: Moul; font-weight: 400; word-wrap: break-word">:</div>
+        <div style="left: 263px; top: 355px; position: absolute; text-align: center; color: black; font-size: 32px; font-family: Moul; font-weight: 400; word-wrap: break-word">:</div>
+        <div style="left: 263px; top: 436px; position: absolute; text-align: center; color: black; font-size: 32px; font-family: Moul; font-weight: 400; word-wrap: break-word">:</div>
+        <div style="left: 263px; top: 514px; position: absolute; text-align: center; color: black; font-size: 32px; font-family: Moul; font-weight: 400; word-wrap: break-word">:</div>
+        <div style="left: 263px; top: 604px; position: absolute; text-align: center; color: black; font-size: 32px; font-family: Moul; font-weight: 400; word-wrap: break-word">:</div>
+        <div style="left: 263px; top: 704px; position: absolute; text-align: center; color: black; font-size: 32px; font-family: Moul; font-weight: 400; word-wrap: break-word">:</div>
+        <style>
+          .custom-button8 {
+              width: 212px;
+              height: 52px;
+              background: #FA880E;
+              border: none;
+              border-radius: 10px;
+              cursor: pointer;
+              font-size: 16px;
+              font-weight: bold;
+              color: #FFF;
+              position: absolute;
+              left: 1135px;
+              top: 823px;
+              transition: box-shadow 0.3s; /* Efek transisi untuk bayangan */
+          }
+          
+          .custom-button8:active {
+              box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Mengubah bayangan saat tombol diklik */
+          }
+          </style>   
+            <form id="FormDataForm" action="formdatadiri_Kevien Abdul Winata 932022061.php" method="POST">
+              <!-- Input fields -->
+              <input type="text" id="nama" name="nama" class="custom-input" placeholder="Nama">
+              <input type="text" id="nisn" name="nisn" class="custom-input6" placeholder="NISN">
+              <input type="text" id="alamat" name="alamat" class="custom-input2" placeholder="Alamat">
+              <input type="text" id="no_telepon" name="no_telepon" class="custom-input3" placeholder="No Telepon">
+              <input type="text" id="asal_sekolah" name="asal_sekolah" class="custom-input4" placeholder="Asal Sekolah">
+              <input type="text" id="nilai_akhir" name="nilai_akhir" class="custom-input5" placeholder="Nilai Akhir">
+              <!-- Submit button -->
+              <button type="button" id="nextButton" class="custom-button8">Selanjutnya</button>
+          </form>
+      </div>
+      <!-- <script>
+        const timeoutDuration = 10000; // 10 seconds in milliseconds
+        let activityTimeout;
+
+        function resetTimer() {
+            clearTimeout(activityTimeout);
+            activityTimeout = setTimeout(() => {
+                // Redirect to 404 not found after timeout
+                window.location.href = '/path/to/404.html';
+            }, timeoutDuration);
+        }
+
+        document.onload = resetTimer;
+        document.onmousemove = resetTimer;
+        document.onkeypress = resetTimer;
+        document.onclick = resetTimer;
+        document.onscroll = resetTimer;
+        document.onkeydown = resetTimer;
+    </script> -->
+      <!-- SweetAlert JS -->
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+      <!-- Custom JS -->
+      <script src="formdatadiri_Kevien Abdul Winata 932022061.js"></script>
+    </div>
+    <script src="formdatadiri_Kevien Abdul Winata 932022061.js" defer></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+</body>
+</html>

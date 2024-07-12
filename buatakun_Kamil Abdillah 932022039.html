@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Buat Akun</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="buatakun_Kamil Abdillah 932022039.css">
+    <script src="validateForm_Kamil Abdillah 932022039.js" defer></script>
+    <style>
+        /* Make body full screen */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div style="width: 100%; height: 100%; position: relative; background: #fff">
+        <div style="width: 459px; height: 1025px; left: 5px; top: 0px; position: absolute; background: #02182D"></div>
+        <div style="width: 416px; height: 155px; left: 26px; top: 98px; position: absolute; text-align: center; color: #FCF2AD; font-size: 64px; font-family: Moul; font-weight: 400; word-wrap: break-word">SICAPER</div>
+        <div style="width: 467px; height: 64px; left: 0px; top: 198px; position: absolute; text-align: center; color: #FA880E; font-size: 36px; font-family: Moul; font-weight: 400; word-wrap: break-word">Blended Learning</div>
+        <img style="width: 411px; height: 570px; left: 5px; top: 315px; position: absolute" src="images/sicaper.jpg" />
+        <div style="width: 953px; height: 1025px; left: 487px; top: 0px; position: absolute; background: white"></div>
+        <div style="left: 859px; top: 70px; position: absolute; text-align: center; color: black; font-size: 40px; font-family: Tahoma; font-weight: 700; line-height: 80px; word-wrap: break-word">Buat Akun</div>
+        
+        <form id="createForm" action="buatakun_Kamil Abdillah 932022039.php" method="post">
+            <label class="input-label" style="top: 260px; left: 258px;">First Name</label>
+            <input type="text" class="custom-input" name="firstName" id="firstName" placeholder="First Name" style="top:281px; background: #FCF2AD;">
+            <label class="input-label2" style="top: 260px; left: 258px;">Last Name</label>
+            <input type="text" class="custom-input2" name="lastName" id="lastName" placeholder="Last Name" style="top: 281px; background: #FCF2AD;">
+            <input type="email" class="custom-input3" name="email" id="email" placeholder="Email" style="background: #FCF2AD;">
+            <input type="password" class="custom-input4" name="password" id="password" placeholder="Password" style="background: #FCF2AD;">
+            <button type="submit" class="custom-button3">Buat Akun</button>
+        </form>
+    </div>
+</body>
+</html>

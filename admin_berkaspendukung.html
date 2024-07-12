@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Berkas Pendukung - Admin</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .full-screen-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            background: white;
+            display: flex;
+            flex-direction: column;
+        }
+        .scrollable {
+            overflow-y: auto;
+            height: calc(100vh - 317px); /* tinggi maksimum tabel */
+            margin-top: 250px; /* to make space for the top elements */
+            padding: 10px;
+        }
+        .absolute-element {
+            position: absolute;
+        }
+        /* Button Style */
+        .admin-button1,
+        .admin-button2,
+        .admin-button3,
+        .admin-button4,
+        .cetak-button,
+        .crud-button,
+        .show-crud-button {
+            padding: 10px 20px;
+            background-color: #ffa500; /* Orange color */
+            color: #fff; /* White color */
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        .admin-button1 {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        }
+        .admin-button2 {
+            position: absolute;
+            bottom: 10px;
+            right: 140px;
+        }
+        .admin-button3 {
+            position: absolute;
+            bottom: 10px;
+            right: 270px;
+        }
+        .admin-button4 {
+            position: absolute;
+            bottom: 10px;
+            right: 460px;
+        }
+        .cetak-button {
+            position: absolute;
+            bottom: 10px;
+            right: 650px;
+        }
+        .show-crud-button {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+        }
+        .edit-button {
+            padding: 8px;
+            background-color: #4CAF50; /* Green color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .edit-button:hover {
+            background-color: #45a049; /* Darker green color on hover */
+        }
+        .admin-button1:hover,
+        .admin-button2:hover,
+        .admin-button3:hover,
+        .admin-button4:hover,
+        .cetak-button:hover,
+        .crud-button:hover,
+        .show-crud-button:hover {
+            background-color: #ff7f00; /* Darker orange color on hover */
+        }
+        .crud-container {
+            background-color: #D9D9D9;
+            padding: 20px;
+            border-radius: 5px;
+            display: none; /* Mulai tersembunyi */
+            position: absolute;
+            top: 200px;
+            left: 20px;
+            width: calc(100% - 40px);
+            max-width: 400px;
+        }
+        .crud-container input {
+            margin: 5px 0;
+            padding: 8px;
+            width: calc(100% - 16px); /* Adjust for padding */
+        }
+        .crud-container .crud-button {
+            margin: 10px 5px 0 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            color: #02182D;
+            margin-bottom: 20px;
+        }
+        table th, table td {
+            border: 1px solid #02182D;
+            padding: 8px;
+            text-align: left;
+        }
+        table th {
+            background-color: #f0f0f0;
+        }
+        .table-image {
+            max-width: 100px; /* Atur lebar maksimum gambar */
+            max-height: 100px; /* Atur tinggi maksimum gambar */
+            display: block;
+            margin: 0 auto; /* Pusatkan gambar dalam sel */
+        }
+    </style>
+</head>
+<body>
+    <div class="full-screen-container">
+        <!-- Top blue bar -->
+        <div class="absolute-element" style="width: 100%; height: 100px; left: 0; top: 0; background: #02182D;"></div>
+        <!-- Second blue bar -->
+        <div class="absolute-element" style="width: 100%; height: 79px; left: 0; top: 100px; background: #02182D;"></div>
+        <!-- Blended Learning -->
+        <div class="absolute-element" style="width: 287px; height: 41px; left: 50px; top: 75px; text-align: center; color: #FA880E; font-size: 24px; font-family: Moul; font-weight: 400;">Blended Learning</div>
+        <!-- SICAPER -->
+        <div class="absolute-element" style="width: 231px; height: 60px; left: 30px; top: 27px; text-align: center; color: #FCF2AD; font-size: 36px; font-family: Moul; font-weight: 400;">SICAPER</div>
+        <!-- Right blue bar -->
+        <div class="absolute-element" style="width: 546px; height: 116px; right: 0; top: 0; background: #02182D;"></div>
+        <!-- Orang Image -->
+        <img class="absolute-element" style="width: 83px; height: 73px; right: 70px; top: 22px;" src="images/orang.jpeg" alt="Orang Image"/>
+        <!-- ADMIN -->
+        <div class="absolute-element" style="width: 461px; height: 59px; right: 0; top: 40px; text-align: center; color: white; font-size: 32px; font-family: Moul; font-weight: 400;">ADMIN</div>
+        <!-- Gray bar on top -->
+        <div class="absolute-element" style="width: 100%; height: 67px; left: 0; top: 178px; background: #D9D9D9;"></div>
+        <!-- Table to display data -->
+        <div class="scrollable">
+            <!-- Search bar -->
+            <div style="margin-bottom: 10px; text-align: right; padding-right: 20px;">
+                <input type="text" id="searchInput" placeholder="Search...">
+                <button class="admin-button1" onclick="searchData()">Search</button>
+            </div>
+            <table style="width: 100%; border-collapse: collapse; color: #02182D;">
+                <thead>
+                    <tr>
+                        <th style="border: 1px solid #02182D; padding: 8px;">ID</th>
+                        <th style="border: 1px solid #02182D; padding: 8px;">Email</th>
+                        <th style="border: 1px solid #02182D; padding: 8px;">Ijazah</th>
+                        <th style="border: 1px solid #02182D; padding: 8px;">Transkrip Nilai</th>
+                        <th style="border: 1px solid #02182D; padding: 8px;">Surat Sehat</th>
+                        <th style="border: 1px solid #02182D; padding: 8px;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="berkasTableBody">
+                    <!-- Data will be loaded by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+        <!-- Blue bar at the bottom -->
+        <div class="absolute-element" style="width: 100%; height: 67px; left: 0; bottom: 0; background: #02182D;"></div>
+        <!-- Admin Button -->
+        <button class="admin-button1" onclick="window.location.href = 'admin_page.html';">Data Akun</button>
+        <!-- Admin Button 2 -->
+        <button class="admin-button2" onclick="window.location.href = 'admin_siswa.html';">Data Siswa</button>
+        <!-- Admin Button 3 -->
+        <button class="admin-button3" onclick="window.location.href = 'admin_programstudi.html';">Data Program Studi</button>
+        <!-- Admin Button 4 -->
+        <button class="admin-button4" onclick="window.location.href = 'admin_berkaspendukung.html';">Berkas Pendukung</button>
+        <!--Cetak Button -->
+        <button class="cetak-button" onclick="showEmailSelectionForm()">Print Data</button>
+        <!-- Tombol untuk menampilkan form CRUD -->
+        <button class="show-crud-button" onclick="showCreateForm()">Tambah Data</button>
+        <!-- Form CRUD -->
+        <!-- Form CRUD -->
+        <div class="crud-container">
+            <input type="hidden" id="id" value=""> <!-- Hidden input untuk menyimpan ID -->
+            <input type="email" id="email" placeholder="Email">
+            <input type="file" id="ijazahFile" accept=".jpg, .jpeg, .png">
+            <input type="file" id="transkripNilaiFile" accept=".jpg, .jpeg, .png">
+            <input type="file" id="suratSehatFile" accept=".jpg, .jpeg, .png">
+            <button class="crud-button" id="createButton" onclick="createData()">Create</button>
+            <button class="crud-button" id="updateButton" style="display: none;" onclick="updateData()">Update</button>
+            <button class="crud-button" id="deleteButton" style="display: none;" onclick="deleteData()">Delete</button>     
+        </div>
+    <script>
+        // JavaScript untuk mengambil dan menampilkan data
+        function fetchData() {
+            fetch('admin_berkaspendukung.php')
+                .then(response => response.json())
+                .then(data => {
+                    let berkasTableBody = document.getElementById('berkasTableBody');
+                    berkasTableBody.innerHTML = ''; // Kosongkan isi tabel sebelum memasukkan data baru
+                    if (data) {
+                        data.forEach(item => {
+                            let row = '<tr>';
+                            row += `<td>${item.id}</td>`;
+                            row += `<td>${item.email}</td>`;
+                            row += `<td><img src="${item.ijazah}" alt="Ijazah" class="table-image"></td>`;
+                            row += `<td><img src="${item.transkrip_nilai}" alt="Transkrip Nilai" class="table-image"></td>`;
+                            row += `<td><img src="${item.surat_sehat}" alt="Surat Sehat" class="table-image"></td>`;
+                            row += `<td style="border: 1px solid #02182D; padding: 8px;"><button class="edit-button" onclick="fillCRUDForm('${item.id}', '${item.email}', '${item.ijazah}', '${item.transkrip_nilai}', '${item.surat_sehat}')">Edit</button></td>`;
+                            row += '</tr>';
+                            berkasTableBody.insertAdjacentHTML('beforeend', row);
+                        });
+                    }
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        }
+
+        function fillCRUDForm(id, email, ijazah, transkrip_nilai, surat_sehat) {
+            document.getElementById('id').value = id;
+            document.getElementById('email').value = email;
+
+            // Untuk file, bisa menggunakan placeholder atau menyesuaikan kebutuhan
+            // Misalnya, menampilkan nama file yang sudah ada jika ingin menunjukkan preview sebelum diubah
+            // Atau hanya menampilkan file yang dipilih setelah dipilih
+            // Anda bisa menyesuaikan dengan logika aplikasi yang diinginkan.
+            
+            document.getElementById('createButton').style.display = 'none';
+            document.getElementById('updateButton').style.display = 'inline-block';
+            document.getElementById('deleteButton').style.display = 'inline-block';
+
+            const crudForm = document.querySelector('.crud-container');
+            if (crudForm.style.display === 'none' || crudForm.style.display === '') {
+                crudForm.style.display = 'block';
+            }
+        }
+
+        function showCreateForm() {
+            document.getElementById('id').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('ijazahFile').value = ''; // Clear file input
+            document.getElementById('transkripNilaiFile').value = ''; // Clear file input
+            document.getElementById('suratSehatFile').value = ''; // Clear file input
+
+            document.getElementById('createButton').style.display = 'inline-block';
+            document.getElementById('updateButton').style.display = 'none';
+            document.getElementById('deleteButton').style.display = 'none';
+
+            const crudForm = document.querySelector('.crud-container');
+            if (crudForm.style.display === 'none' || crudForm.style.display === '') {
+                crudForm.style.display = 'block';
+            }
+        }
+        
+        function createData() {
+    var formData = new FormData();
+    formData.append('email', document.getElementById('email').value);
+    formData.append('ijazahFile', document.getElementById('ijazahFile').files[0]);
+    formData.append('transkripNilaiFile', document.getElementById('transkripNilaiFile').files[0]);
+    formData.append('suratSehatFile', document.getElementById('suratSehatFile').files[0]);
+
+    fetch('create_berkas.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('Data berhasil ditambahkan.');
+            fetchData();
+            document.querySelector('.crud-container').style.display = 'none';
+        } else {
+            alert('Gagal menambahkan data: ' + data.message);
+        }
+    })
+    .catch(error => console.error('Error creating data:', error));
+}
+
+function updateData() {
+    // Ambil nilai dari form atau objek lainnya
+    let id = document.getElementById('id').value;
+    let email = document.getElementById('email').value;
+
+    // Ambil file yang diunggah (jika ada perubahan)
+    let ijazahFile = document.getElementById('ijazahFile').files[0];
+    let transkripNilaiFile = document.getElementById('transkripNilaiFile').files[0];
+    let suratSehatFile = document.getElementById('suratSehatFile').files[0];
+
+    // Buat objek FormData
+    let formData = new FormData();
+    formData.append('id', id);
+    formData.append('email', email);
+
+    // Tambahkan file jika ada perubahan
+    if (ijazahFile) {
+        formData.append('ijazahFile', ijazahFile);
+    }
+    if (transkripNilaiFile) {
+        formData.append('transkripNilaiFile', transkripNilaiFile);
+    }
+    if (suratSehatFile) {
+        formData.append('suratSehatFile', suratSehatFile);
+    }
+
+    // Kirim data menggunakan fetch API
+    fetch('update_berkas.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            alert('Data berhasil diperbarui.');
+            fetchData(); // Panggil fungsi untuk refresh data setelah berhasil update
+        } else {
+            alert('Gagal memperbarui data. Error: ' + data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error updating data:', error);
+        alert('Terjadi kesalahan saat memperbarui data.');
+    });
+}
+
+function deleteData() {
+    const id = document.getElementById('id').value;
+
+    fetch('delete_berkas.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id })
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(data.message);
+        fetchData();
+        document.querySelector('.crud-container').style.display = 'none';
+    })
+    .catch(error => console.error('Error deleting data:', error));
+}
+        function searchData() {
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+            const rows = document.querySelectorAll('#berkasTableBody tr');
+
+            rows.forEach(row => {
+                const cells = row.cells;
+                let found = false;
+
+                // Loop through all cells in the row (except Actions cell)
+                for (let i = 1; i < cells.length - 1; i++) {
+                    const cellText = cells[i].textContent.toLowerCase();
+                    if (cellText.includes(searchInput)) {
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (found) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+        // Fungsi untuk menampilkan form dan memilih email
+function showEmailSelectionForm() {
+    // Contoh menggunakan dialog prompt untuk memasukkan email
+    const email = prompt('Masukkan email untuk mencetak data:');
+    if (email) {
+        // Memanggil fungsi untuk memeriksa ketersediaan data dan mencetak jika tersedia
+        PrintData(email);
+    }
+}
+
+// Fungsi untuk mencetak data berdasarkan email
+function PrintData() {
+    const email = prompt('Masukkan email untuk mencetak data:');
+    if (email) {
+        fetchAndPrintData(email);
+    }
+}
+
+function fetchAndPrintData(email) {
+    fetch(`printdata.php?email=${email}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.blob();
+        })
+        .then(blob => {
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            // Penamaan file PDF yang diunduh
+            a.download = `bukti_pendaftaran_${email}.pdf`;
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+        })
+        .catch(error => console.error('Error fetching data:', error));
+}
+
+        // Menambahkan event listener untuk tombol "Enter" pada searchInput
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchData();
+            }
+        });
+
+        window.onload = fetchData;
+    </script>
+</body>
+</html>

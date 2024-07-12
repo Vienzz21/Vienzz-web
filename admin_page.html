@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Data Akun - Admin</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .full-screen-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            background: white;
+            display: flex;
+            flex-direction: column;
+        }
+        .scrollable {
+            overflow-y: auto;
+            height: calc(100vh - 317px); /* tinggi maksimum tabel */
+            margin-top: 250px; /* to make space for the top elements */
+            padding: 10px;
+        }
+        .absolute-element {
+            position: absolute;
+        }
+        /* Button Style */
+        .admin-button1,
+        .admin-button2,
+        .admin-button3,
+        .admin-button4,
+        .crud-button,
+        .show-crud-button {
+            padding: 10px 20px;
+            background-color: #ffa500; /* Orange color */
+            color: #fff; /* White color */
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        .admin-button1 {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        }
+        .admin-button2 {
+            position: absolute;
+            bottom: 10px;
+            right: 140px;
+        }
+        .admin-button3 {
+            position: absolute;
+            bottom: 10px;
+            right: 270px;
+        }
+        .admin-button4 {
+            position: absolute;
+            bottom: 10px;
+            right: 460px;
+        }
+        .show-crud-button {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+        }
+        .edit-button {
+            padding: 8px;
+            background-color: #4CAF50; /* Green color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .edit-button:hover {
+            background-color: #45a049; /* Darker green color on hover */
+        }
+        .admin-button1:hover,
+        .admin-button2:hover,
+        .admin-button3:hover,
+        .admin-button4:hover,
+        .crud-button:hover,
+        .show-crud-button:hover {
+            background-color: #ff7f00; /* Darker orange color on hover */
+        }
+        .crud-container {
+            background-color: #D9D9D9;
+            padding: 20px;
+            border-radius: 5px;
+            display: none; /* Mulai tersembunyi */
+            position: absolute;
+            top: 200px;
+            left: 20px;
+            width: calc(100% - 40px);
+            max-width: 400px;
+        }
+        .crud-container input {
+            margin: 5px 0;
+            padding: 8px;
+            width: calc(100% - 16px); /* Adjust for padding */
+        }
+        .crud-container .crud-button {
+            margin: 10px 5px 0 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            color: #02182D;
+            margin-bottom: 20px;
+        }
+        table th, table td {
+            border: 1px solid #02182D;
+            padding: 8px;
+            text-align: left;
+        }
+        table th {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="full-screen-container">
+        <!-- Top blue bar -->
+        <div class="absolute-element" style="width: 100%; height: 100px; left: 0; top: 0; background: #02182D;"></div>
+        <!-- Second blue bar -->
+        <div class="absolute-element" style="width: 100%; height: 79px; left: 0; top: 100px; background: #02182D;"></div>
+        <!-- Blended Learning -->
+        <div class="absolute-element" style="width: 287px; height: 41px; left: 50px; top: 75px; text-align: center; color: #FA880E; font-size: 24px; font-family: Moul; font-weight: 400;">Blended Learning</div>
+        <!-- SICAPER -->
+        <div class="absolute-element" style="width: 231px; height: 60px; left: 30px; top: 27px; text-align: center; color: #FCF2AD; font-size: 36px; font-family: Moul; font-weight: 400;">SICAPER</div>
+        <!-- Right blue bar -->
+        <div class="absolute-element" style="width: 546px; height: 116px; right: 0; top: 0; background: #02182D;"></div>
+        <!-- Orang Image -->
+        <img class="absolute-element" style="width: 83px; height: 73px; right: 70px; top: 22px;" src="images/orang.jpeg" alt="Orang Image"/>
+        <!-- ADMIN -->
+        <div class="absolute-element" style="width: 461px; height: 59px; right: 0; top: 40px; text-align: center; color: white; font-size: 32px; font-family: Moul; font-weight: 400;">ADMIN</div>
+        <!-- Gray bar on top -->
+        <div class="absolute-element" style="width: 100%; height: 67px; left: 0; top: 178px; background: #D9D9D9;"></div>
+        <!-- Table to display data -->
+        <div class="scrollable">
+            <!-- Search bar -->
+            <div style="margin-bottom: 10px; text-align: right; padding-right: 20px;">
+                <input type="text" id="searchInput" placeholder="Search...">
+                <button class="admin-button1" onclick="searchData()">Search</button>
+            </div>
+            <table style="width: 100%; border-collapse: collapse; color: #02182D;">
+                <thead>
+                    <tr>
+                        <th style="border: 1px solid #02182D; padding: 8px;">ID</th>
+                        <th style="border: 1px solid #02182D; padding: 8px;">FirstName</th>
+                        <th style="border: 1px solid #02182D; padding: 8px;">LastName</th>
+                        <th style="border: 1px solid #02182D; padding: 8px;">Email</th>
+                        <th style="border: 1px solid #02182D; padding: 8px;">Password</th>
+                        <th style="border: 1px solid #02182D; padding: 8px;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="akunTableBody">
+                    <!-- Data will be loaded by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+        <!-- Blue bar at the bottom -->
+        <div class="absolute-element" style="width: 100%; height: 67px; left: 0; bottom: 0; background: #02182D;"></div>
+        <!-- Admin Button -->
+        <button class="admin-button1" onclick="window.location.href = 'admin_page.html';">Data Akun</button>
+        <!-- Admin Button 2 -->
+        <button class="admin-button2" onclick="window.location.href = 'admin_siswa.html';">Data Siswa</button>
+          <!-- Admin Button 3 -->
+        <button class="admin-button3" onclick="window.location.href = 'admin_programstudi.html';">Data Program Studi</button>
+        <button class="admin-button4" onclick="window.location.href = 'admin_berkaspendukung.html';">Berkas Pendukung</button>
+        <!-- Tombol untuk menampilkan form CRUD -->
+        <button class="show-crud-button" onclick="showCreateForm()">Tambah Data</button>
+        <!-- Form CRUD -->
+        <div class="crud-container">
+            <input type="hidden" id="id">
+            <input type="text" id="firstname" placeholder="First Name">
+            <input type="text" id="lastname" placeholder="Last Name">
+            <input type="email" id="email" placeholder="Email">
+            <input type="password" id="password" placeholder="Password">
+            <button class="crud-button" id="createButton" onclick="createData()">Create</button>
+            <button class="crud-button" id="updateButton" onclick="updateData()">Update</button>
+            <button class="crud-button" id="deleteButton" onclick="deleteData()">Delete</button>
+        </div>
+    </div>
+
+    <script>
+        function fetchData() {
+            fetch('admin_page.php')
+                .then(response => response.json())
+                .then(data => {
+                    let akunTableBody = document.getElementById('akunTableBody');
+                    akunTableBody.innerHTML = ''; // Clear table body
+                    if (data) {
+                        data.forEach(akun => {
+                            let row = '<tr>';
+                            row += `<td style="border: 1px solid #02182D; padding: 8px;">${akun.id}</td>`;
+                            row += `<td style="border: 1px solid #02182D; padding: 8px;">${akun.firstname}</td>`;
+                            row += `<td style="border: 1px solid #02182D; padding: 8px;">${akun.lastname}</td>`;
+                            row += `<td style="border: 1px solid #02182D; padding: 8px;">${akun.email}</td>`;
+                            row += `<td style="border: 1px solid #02182D; padding: 8px;">${akun.password}</td>`;
+                            row += `<td style="border: 1px solid #02182D; padding: 8px;"><button class="edit-button" onclick="fillCRUDForm(${akun.id}, '${akun.firstname}', '${akun.lastname}', '${akun.email}', '${akun.password}')">Edit</button></td>`;
+                            row += '</tr>';
+                            akunTableBody.insertAdjacentHTML('beforeend', row);
+                        });
+                    }
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        }
+
+        function fillCRUDForm(id, firstname, lastname, email, password) {
+            document.getElementById('id').value = id;
+            document.getElementById('firstname').value = firstname;
+            document.getElementById('lastname').value = lastname;
+            document.getElementById('email').value = email;
+            document.getElementById('password').value = password;
+
+            document.getElementById('createButton').style.display = 'none';
+            document.getElementById('updateButton').style.display = 'inline-block';
+            document.getElementById('deleteButton').style.display = 'inline-block';
+
+            const crudForm = document.querySelector('.crud-container');
+            if (crudForm.style.display === 'none' || crudForm.style.display === '') {
+                crudForm.style.display = 'block';
+            }
+        }
+
+        function showCreateForm() {
+            document.getElementById('id').value = '';
+            document.getElementById('firstname').value = '';
+            document.getElementById('lastname').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('password').value = '';
+
+            document.getElementById('createButton').style.display = 'inline-block';
+            document.getElementById('updateButton').style.display = 'none';
+            document.getElementById('deleteButton').style.display = 'none';
+
+            const crudForm = document.querySelector('.crud-container');
+            if (crudForm.style.display === 'none' || crudForm.style.display === '') {
+                crudForm.style.display = 'block';
+            }
+        }
+
+   // Function to create new account data
+function createData() {
+    const firstname = document.getElementById('firstname').value;
+    const lastname = document.getElementById('lastname').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    // Pastikan nilai email tidak kosong
+    if (!email) {
+        alert('Email harus diisi.');
+        return;
+    }
+
+    // Buat objek FormData untuk mengirim data
+    const formData = new FormData();
+    formData.append('firstname', firstname);
+    formData.append('lastname', lastname);
+    formData.append('email', email);
+    formData.append('password', password);
+
+    fetch('create_data.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Server response:', data); // Debugging log
+        if (data.success) {
+            alert(data.message); // Tampilkan pesan balasan dari server
+            fetchData(); // Muat ulang data setelah berhasil menambahkan
+            document.querySelector('.crud-container').style.display = 'none'; // Sembunyikan form CRUD setelah berhasil
+        } else {
+            alert('Gagal menambahkan data: ' + data.message);
+        }
+    })
+    .catch(error => console.error('Error creating data:', error));
+}
+
+        function updateData() {
+            const id = document.getElementById('id').value;
+            const firstname = document.getElementById('firstname').value;
+            const lastname = document.getElementById('lastname').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            fetch('update_data.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id, firstname, lastname, email, password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                fetchData();
+                document.querySelector('.crud-container').style.display = 'none';
+            })
+            .catch(error => console.error('Error updating data:', error));
+        }
+
+        function deleteData() {
+            const id = document.getElementById('id').value;
+
+            fetch('delete_data.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                fetchData();
+                document.querySelector('.crud-container').style.display = 'none';
+            })
+            .catch(error => console.error('Error deleting data:', error));
+        }
+
+        function searchData() {
+        const searchInput = document.getElementById('searchInput').value.toLowerCase();
+        const rows = document.querySelectorAll('#akunTableBody tr');
+
+        rows.forEach(row => {
+            const cells = row.cells;
+            let found = false;
+
+            // Loop through all cells in the row (except Actions cell)
+            for (let i = 1; i < cells.length - 1; i++) {
+                const cellText = cells[i].textContent.toLowerCase();
+                if (cellText.includes(searchInput)) {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
+
+    // Menambahkan event listener untuk tombol "Enter" pada searchInput
+    document.getElementById('searchInput').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            searchData();
+        }
+    });
+
+    window.onload = fetchData;
+    </script>
+</body>
+</html>

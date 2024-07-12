@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="index_Muhammad rizal 932022043.css" rel="stylesheet">
+    <!-- SweetAlert2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+    <!-- JavaScript for login validation -->
+    <script src="validateLogin_Muhammad rizal 932022043.js" defer></script>
+
+    <style>
+        .admin-container {
+            position: relative;
+        }
+
+        .admin-button-container {
+            position: absolute;
+            top: 50px;
+            right: -290px;
+            display: flex;
+            align-items: center;
+            z-index: 9999; /* Ensure it's above other content */
+        }
+
+        .admin-button {
+            padding: 10px 20px;
+            background-color: #fff; /* White color */
+            color: #ffa500;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        .admin-button:hover {
+            background-color: #fff; /* Maintain the same background on hover */
+        }
+
+        .admin-image {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login-box">
+            <div class="login-title">LOGIN</div>
+            <div class="input-background" style="top: 281px;"></div>
+            <div class="input-background" style="top: 411px;"></div>
+            <div class="button-background"></div>
+
+            <!-- Form untuk login -->
+            <form id="createForm" action="index_Muhammad rizal 932022043.php" method="POST">
+                <!-- Label dan Input untuk Email -->
+                <label class="input-label" style="top: 260px; left: 258px;">EMAIL</label>
+                <input type="text" class="custom-input" id="email" name="email" placeholder="Email" style="top: 281px; background: #D9D9D9;">
+
+                <!-- Label dan Input untuk Password -->
+                <label class="input-label" style="top: 390px; left: 258px;">Password</label>
+                <input type="password" class="custom-input" id="password" name="password" placeholder="Password" style="top: 411px; background: #D9D9D9;">
+
+                <div class="button-container">
+                    <button class="custom-button" type="submit">MASUK</button>
+                    <div class="divider"></div>
+                    <div class="create-account-background"></div>
+                    <button class="custom-button2" type="button" onclick="window.location.href = 'buatakun_Kamil Abdillah 932022039.html';">Buat Akun Baru</button>
+                </div>
+            </form>
+
+            <div class="side-bar right-bar"></div>
+            <div class="bottom-bar"></div>
+        </div>
+        <div class="side-bar left-bar"></div>
+        <div class="sicaper-title">SICAPER</div>
+        <img class="sicaper-image" src="images/sicaper.jpg" />
+        <div class="blended-learning">Blended Learning</div>
+        <div class="top-bar"></div>
+
+        <!-- Admin button and image -->
+        <div class="admin-container">
+            <div class="admin-button-container">
+                <img class="admin-image" src="images/admin.jpg" alt="Admin Image">
+                <button class="admin-button" onclick="window.location.href = 'login_admin.html';">Admin</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>

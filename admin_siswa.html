@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Data Siswa - Admin</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+        .full-screen-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            background: white;
+        }
+        .absolute-element {
+            position: absolute;
+        }
+        .top-blue-bar {
+            width: 100%;
+            height: 100px;
+            background: #02182D;
+            top: 0;
+            left: 0;
+        }
+        .second-blue-bar {
+            width: 100%;
+            height: 79px;
+            background: #02182D;
+            top: 100px;
+            left: 0;
+        }
+        .blended-learning {
+            width: 287px;
+            height: 41px;
+            text-align: center;
+            color: #FA880E;
+            font-size: 24px;
+            font-weight: 400;
+            top: 75px;
+            left: 50px;
+            font-family: Moul;
+        }
+        .sicaper {
+            width: 231px;
+            height: 60px;
+            text-align: center;
+            color: #FCF2AD;
+            font-size: 36px;
+            font-weight: 400;
+            top: 27px;
+            left: 30px;
+            font-family: Moul;
+        }
+        .right-blue-bar {
+            width: 546px;
+            height: 116px;
+            background: #02182D;
+            top: 0;
+            right: 0;
+        }
+        .orang-image {
+            width: 83px;
+            height: 73px;
+            top: 22px;
+            right: 70px;
+        }
+        .admin {
+            width: 461px;
+            height: 59px;
+            text-align: center;
+            color: white;
+            font-size: 32px;
+            font-weight: 400;
+            top: 40px;
+            right: 0;
+            font-family: Moul;
+        }
+        .gray-bar-on-top {
+            width: 100%;
+            height: 67px;
+            background: #D9D9D9;
+            top: 178px;
+            left: 0;
+        }
+        .scrollable {
+            overflow-y: auto;
+            overflow-x: hidden;
+            height: calc(100vh - 370px); /* Adjusted maximum height for the table */
+            margin-top: 250px; /* Space for top elements */
+        }
+        .admin-button1,
+        .admin-button2,
+        .admin-button3,
+        .admin-button4,
+        .crud-button,
+        .show-crud-button {
+            padding: 10px 20px;
+            background-color: #ffa500; /* Orange color */
+            color: #fff; /* White color */
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        .search-button {
+            padding: 10px 20px;
+            background-color: #ffa500; /* Orange color */
+            color: #fff; /* White color */
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            margin-left: 10px; /* Added margin for spacing */
+        }
+        .admin-button1 {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        }
+        .admin-button2 {
+            position: absolute;
+            bottom: 10px;
+            right: 140px;
+        }
+        .admin-button3 {
+            position: absolute;
+            bottom: 10px;
+            right: 270px;
+        }
+        .admin-button4 {
+            position: absolute;
+            bottom: 10px;
+            right: 460px;
+        }
+        .show-crud-button {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+        }
+        .admin-button1:hover,
+        .admin-button2:hover,
+        .admin-button3:hover,
+        .admin-button4:hover,
+        .crud-button:hover,
+        .show-crud-button:hover{
+        background-color: #ff7f00; /* Darker orange color on hover */
+        }
+        .crud-container {
+            background-color: #D9D9D9;
+            padding: 20px;
+            border-radius: 5px;
+            display: none; /* Default hidden */
+            position: absolute;
+            top: 200px;
+            left: 20px;
+            width: calc(100% - 40px);
+            max-width: 400px;
+        }
+        .crud-container input {
+            margin: 5px 0;
+            padding: 8px;
+            width: calc(100% - 16px); /* Adjust for padding */
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+        .crud-container .update-delete-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .crud-container .update-delete-buttons button {
+            flex: 1;
+            margin: 0 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            color: #02182D;
+            margin-bottom: 20px;
+        }
+        table th, table td {
+            border: 1px solid #02182D;
+            padding: 12px;
+            text-align: left;
+        }
+        table th {
+            background-color: #f0f0f0;
+        }
+        /* Adjust padding for the first column (ID) */
+        table th:first-child, table td:first-child {
+            padding-left: 20px;
+        }
+
+        /* Styling for edit button */
+        .edit-button {
+            background-color: #4CAF50; /* Green */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 16px;
+            cursor: pointer;
+        }
+
+        .edit-button:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="full-screen-container">
+        <!-- Top blue bar -->
+        <div class="absolute-element top-blue-bar"></div>
+        <!-- Second blue bar -->
+        <div class="absolute-element second-blue-bar"></div>
+        <!-- Blended Learning -->
+        <div class="absolute-element blended-learning">Blended Learning</div>
+        <!-- SICAPER -->
+        <div class="absolute-element sicaper">SICAPER</div>
+        <!-- Right blue bar -->
+        <div class="absolute-element right-blue-bar"></div>
+        <!-- Orang Image -->
+        <img class="absolute-element orang-image" src="images/orang.jpeg" alt="Orang Image"/>
+        <!-- ADMIN -->
+        <div class="absolute-element admin">ADMIN</div>
+        <!-- Gray bar on top -->
+        <div class="absolute-element gray-bar-on-top"></div>
+
+        <!-- Table to display data -->
+        <div class="scrollable absolute-element">
+            <div style="margin-bottom: 10px; text-align: right; padding-right: 20px;">
+                <input type="text" id="searchInput" placeholder="Search...">
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nama</th>
+                        <th>NISN</th>
+                        <th>Alamat</th>
+                        <th>No Telepon</th>
+                        <th>Asal Sekolah</th>
+                        <th>Nilai Akhir</th>
+                        <th>Email</th>
+                        <th>Actions</th> <!-- Added Actions column -->
+                    </tr>
+                </thead>
+                <tbody id="siswaTableBody">
+                    <!-- Data will be loaded here by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Blue bar at the bottom -->
+        <div class="absolute-element" style="width: 100%; height: 67px; left: 0; bottom: 0; background: #02182D;"></div>
+        
+        <!-- Admin Buttons -->
+        <button class="admin-button1" onclick="window.location.href = 'admin_page.html';">Data Akun</button>
+        <button class="admin-button2" onclick="window.location.href = 'admin_siswa.html';">Data Siswa</button>
+        <button class="admin-button3" onclick="window.location.href = 'admin_programstudi.html';">Data Program Studi</button>
+        <button class="admin-button4" onclick="window.location.href = 'admin_berkaspendukung.html';">Berkas Pendukung</button>
+        <!-- Show CRUD Form Button -->
+        <button class="show-crud-button" onclick="showCreateForm()">Tambah Data</button>
+        <!-- Search Button -->
+        <!-- CRUD Form Container -->
+        <div class="crud-container">
+            <input type="hidden" id="id">
+            <input type="text" id="nama" placeholder="Nama">
+            <input type="text" id="nisn" placeholder="NISN">
+            <input type="text" id="alamat" placeholder="Alamat">
+            <input type="text" id="no_telpon" placeholder="No Telepon">
+            <input type="text" id="asal_sekolah" placeholder="Asal Sekolah">
+            <input type="text" id="nilai_akhir" placeholder="Nilai Akhir">
+            <input type="text" id="email" placeholder="Email">
+             <button class="crud-button" id="createButton" onclick="createData()">Create</button>
+            <button class="crud-button" id="updateButton" onclick="updateData()">Update</button>
+            <button class="crud-button" id="deleteButton" onclick="deleteData()">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to fetch data from server
+        function fetchData() {
+            fetch('admin_siswa.php')
+                .then(response => response.json())
+                .then(data => {
+                    let siswaTableBody = document.getElementById('siswaTableBody');
+                    siswaTableBody.innerHTML = ''; // Clear table body
+                    if (data) {
+                        data.forEach(siswa => {
+                            let row = '<tr>';
+                            row += `<td>${siswa.id}</td>`;
+                            row += `<td>${siswa.nama}</td>`;
+                            row += `<td>${siswa.nisn}</td>`;
+                            row += `<td>${siswa.alamat}</td>`;
+                            row += `<td>${siswa.no_telpon}</td>`;
+                            row += `<td>${siswa.asal_sekolah}</td>`;
+                            row += `<td>${siswa.nilai_akhir}</td>`;
+                            row += `<td>${siswa.email}</td>`;
+                            row += `<td><button class="edit-button" onclick="fillCRUDForm(${siswa.id}, '${siswa.nama}', '${siswa.nisn}', '${siswa.alamat}', '${siswa.no_telpon}', '${siswa.asal_sekolah}', '${siswa.nilai_akhir}', '${siswa.email}')">Edit</button></td>`;
+                            row += '</tr>';
+                            siswaTableBody.insertAdjacentHTML('beforeend', row);
+                        });
+                    }
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        }
+        // Function to fill the CRUD form with data for editing
+// Function to fill the CRUD form with data for editing
+function fillCRUDForm(id, nama, nisn, alamat, no_telpon, asal_sekolah, nilai_akhir, email) {
+    document.getElementById('id').value = id;
+    document.getElementById('nama').value = nama;
+    document.getElementById('nisn').value = nisn;
+    document.getElementById('alamat').value = alamat;
+    document.getElementById('no_telpon').value = no_telpon;
+    document.getElementById('asal_sekolah').value = asal_sekolah;
+    document.getElementById('nilai_akhir').value = nilai_akhir;
+    document.getElementById('email').value = email;
+
+    // Menyembunyikan tombol Create, menampilkan tombol Update dan Delete
+    document.getElementById('createButton').style.display = 'none';
+    document.getElementById('updateButton').style.display = 'inline-block';
+    document.getElementById('deleteButton').style.display = 'inline-block';
+
+    // Menyembunyikan form CRUD jika belum ditampilkan
+    const crudForm = document.querySelector('.crud-container');
+    if (crudForm.style.display === 'none' || crudForm.style.display === '') {
+        crudForm.style.display = 'block';
+    }
+}
+
+// Function to show the create form for adding new data
+function showCreateForm() {
+    console.log('Tombol Tambah Data ditekan.');
+    document.getElementById('id').value = '';
+    document.getElementById('nama').value = '';
+    document.getElementById('nisn').value = '';
+    document.getElementById('alamat').value = '';
+    document.getElementById('no_telpon').value = '';
+    document.getElementById('asal_sekolah').value = '';
+    document.getElementById('nilai_akhir').value = '';
+    document.getElementById('email').value = '';
+
+    // Menampilkan tombol Create, menyembunyikan tombol Update dan Delete
+    document.getElementById('createButton').style.display = 'inline-block';
+    document.getElementById('updateButton').style.display = 'none';
+    document.getElementById('deleteButton').style.display = 'none';
+
+    // Menampilkan form CRUD jika belum ditampilkan
+    const crudForm = document.querySelector('.crud-container');
+    if (crudForm.style.display === 'none' || crudForm.style.display === '') {
+        crudForm.style.display = 'block';
+    }
+}
+
+                // Function to clear CRUD form fields
+         function clearCRUDForm() {
+            document.getElementById('id').value = '';
+            document.getElementById('nama').value = '';
+            document.getElementById('nisn').value = '';
+            document.getElementById('alamat').value = '';
+            document.getElementById('no_telpon').value = '';
+            document.getElementById('asal_sekolah').value = '';
+            document.getElementById('nilai_akhir').value = '';
+            document.getElementById('email').value = '';
+
+            // Menampilkan tombol Create, menyembunyikan tombol Update dan Delete
+            document.getElementById('createButton').style.display = 'inline-block';
+            document.getElementById('updateButton').style.display = 'none';
+            document.getElementById('deleteButton').style.display = 'none';
+        }
+
+
+
+        // Function to create new data
+        function createData() {
+            const nama = document.getElementById('nama').value;
+            const nisn = document.getElementById('nisn').value;
+            const alamat = document.getElementById('alamat').value;
+            const no_telpon = document.getElementById('no_telpon').value;
+            const asal_sekolah = document.getElementById('asal_sekolah').value;
+            const nilai_akhir = document.getElementById('nilai_akhir').value;
+            const email = document.getElementById('email').value;
+
+            fetch('create_data_siswa.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ nama, nisn, alamat, no_telpon, asal_sekolah, nilai_akhir, email })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                fetchData();
+                toggleCRUDForm(); // Hide CRUD form
+            })
+            .catch(error => console.error('Error creating data:', error));
+        }
+
+        // Function to update existing data
+        function updateData() {
+            const id = document.getElementById('id').value;
+            const nama = document.getElementById('nama').value;
+            const nisn = document.getElementById('nisn').value;
+            const alamat = document.getElementById('alamat').value;
+            const no_telpon = document.getElementById('no_telpon').value;
+            const asal_sekolah = document.getElementById('asal_sekolah').value;
+            const nilai_akhir = document.getElementById('nilai_akhir').value;
+            const email = document.getElementById('email').value;
+
+            fetch('update_data_siswa.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id, nama, nisn, alamat, no_telpon, asal_sekolah, nilai_akhir, email })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                fetchData();
+                toggleCRUDForm(); // Hide CRUD form
+            })
+            .catch(error => console.error('Error updating data:', error));
+        }
+
+        // Function to delete data
+        function deleteData() {
+            const id = document.getElementById('id').value;
+
+            fetch('delete_data_siswa.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                fetchData();
+                toggleCRUDForm(); // Hide CRUD form
+            })
+            .catch(error => console.error('Error deleting data:', error));
+        }
+
+        // Function to perform search
+        function searchData() {
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+            const rows = document.querySelectorAll('#siswaTableBody tr');
+
+            rows.forEach(row => {
+                const cells = row.cells;
+                let found = false;
+
+                // Loop through all cells in the row (except Actions cell)
+                for (let i = 1; i < cells.length - 1; i++) {
+                    const cellText = cells[i].textContent.toLowerCase();
+                    if (cellText.includes(searchInput)) {
+                        found = true;
+                        break;
+                    }
+                }
+                if (found) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        // Add event listener for "Enter" key press in search input
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchData();
+            }
+        });
+      // Function to perform search
+function searchData() {
+    const searchInput = document.getElementById('searchInput').value.toLowerCase();
+    const rows = document.querySelectorAll('#siswaTableBody tr');
+
+    rows.forEach(row => {
+        const cells = row.cells;
+        let found = false;
+
+        // Loop through all cells in the row (except Actions cell)
+        for (let i = 1; i < cells.length - 1; i++) {
+            const cellText = cells[i].textContent.toLowerCase();
+            if (cellText.includes(searchInput)) {
+                found = true;
+                break;
+            }
+        }
+
+        if (found) {
+            row.style.display = ''; // Show row if found
+        } else {
+            row.style.display = 'none'; // Hide row if not found
+        }
+    });
+}
+
+// Add event listener for "Enter" key press in search input
+document.getElementById('searchInput').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        searchData();
+    }
+});
+
+    window.onload = fetchData;
+    </script>
+</body>
+</html>
